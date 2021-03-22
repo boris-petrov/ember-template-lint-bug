@@ -1,7 +1,11 @@
-{{page-title "EmberTemplateLintBug"}}
+{{! template-lint-disable no-invalid-interactive }}
+<div {{on "click" this.onClick}}>
+  {{! template-lint-enable no-invalid-interactive }}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+  {{#if this.foo}}
+    {{! template-lint-disable no-invalid-interactive }}
+    <div {{on "click" this.onClick}}>
+      {{! template-lint-enable no-invalid-interactive }}
+    </div>
+  {{/if}}
+</div>
